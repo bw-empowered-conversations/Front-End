@@ -2,12 +2,21 @@
 
 ## Welcome to the Front End Development Portion of this Empowered Conversations Project.
 
- # Below you will find:
- - The links for MVP for React I and II 
+Empowered Conversation aims to re-envision the future of social support. With our text-based tool, the person you want to have a “hard conversation” with will be texted before the conversation with a heads-up so they can emotionally prepare themselves. From sexual assault disclosure to coming out, transitioning, grief and loss, we set the stage for relationships that are radically more supportive and meaningful than you ever imagined they could be.
+
+# Below you will find:
  - MVP for the Product
+ - Role Descriptions for React I and II 
  - Some instructions to take you through the development. This will be updated as the project progresses.
 
- # MVP for React I
+# MVP for Empowered-Conversations
+- Create a "Use our Tool" page.  
+- On the "Use our Tool" page - A form that has four fields for the user to fill in: Friend/family member's name and  phone number: Your name: Your phone number: And then at the bottom, a continue button.
+- A pop-up consent/liability waiver before the form sends. (And then which sends the form when they check the box and press submit.)
+- Pop up to confirm the message was sent to the person the user entered
+- The friend/family member will receive a text notifications through Apple APNs or other push API. 
+
+ # React I
 ## **Web Application Development Role Description**
 
 As a Front End Developer, you are tasked to work in conjunction with the Web UI Developer/s on your team as well as the Front End Framework Developer on the product to deliver a fully functioning web app.
@@ -25,7 +34,7 @@ As a Front End Developer, you are tasked to work in conjunction with the Web UI 
 # Link for Rubric
 `https://www.notion.so/0200d2f8b46345c48c1418fa1c33652c?v=995e7fc27b73425bbe0f8741a6ba2c15`
 
-# MVP for React II
+# React II
 ## Front End Framework **Development Role Description**
 
 As a Front End Framework Developer, you are tasked to work in conjunction with the Web UI Developer/s on your team as well as the Front End Framework Developer on the product to deliver a fully functioning web app.
@@ -41,3 +50,5 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 
 # Link for Rubric
 `https://www.notion.so/f57be7bfbeac4070895b51be1caccd51?v=8b5cff684a2f46aea171ee5f055257c2`
+
+
