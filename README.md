@@ -51,4 +51,29 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 # Link for Rubric
 `https://www.notion.so/f57be7bfbeac4070895b51be1caccd51?v=8b5cff684a2f46aea171ee5f055257c2`
 
+## Project Setup
+
+[ ] Create a branch <firstName-lastName> All of your commits will be made under this branch
+
+[ ] Download create-react-app
+[ ] Download your needed dependencies--axios, react-redux, styled-components, yup
+[ ] Set up components
+
+- React I
+[ ] Emergency Contact
+[ ] Conversation Components (Make sure you make a route for each of them in App.js)
+[ ] Set Up React Router
+[ ] Formik Validation?
+
+- React II
+    [ ] axiosWithAuth
+    [ ] Login page
+    [ ] Private Route
+    [ ] SignUp
+    [ ] Register
+    [ ] Testing
+
+
+    
+
 
