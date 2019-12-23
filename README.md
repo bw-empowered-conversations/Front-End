@@ -25,7 +25,7 @@ As a Front End Developer, you are tasked to work in conjunction with the Web UI 
 # Link for Rubric
 `https://www.notion.so/0200d2f8b46345c48c1418fa1c33652c?v=995e7fc27b73425bbe0f8741a6ba2c15`
 
-#MVP for React II
+# MVP for React II
 ## Front End Framework **Development Role Description**
 
 As a Front End Framework Developer, you are tasked to work in conjunction with the Web UI Developer/s on your team as well as the Front End Framework Developer on the product to deliver a fully functioning web app.
