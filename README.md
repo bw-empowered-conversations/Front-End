@@ -60,18 +60,18 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 [ ] Set up components
 
 - React I
-[ ] Emergency Contact
-[ ] Conversation Components (Make sure you make a route for each of them in App.js)
-[ ] Set Up React Router
-[ ] Formik Validation?
+    * Emergency Contact
+    * Conversation Components (Make sure you make a route for each of them in App.js)
+    * Set Up React Router
+    * Formik Validation?
 
-- React II
-    [ ] axiosWithAuth
-    [ ] Login page
-    [ ] Private Route
-    [ ] SignUp
-    [ ] Register
-    [ ] Testing
+ - React II
+    * axiosWithAuth
+    * Login page
+    * Private Route
+    * SignUp
+    * Register
+    * Testing
 
 
     
