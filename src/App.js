@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 
 function App() {
@@ -10,4 +11,10 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    
+  }
+}
+
+export default connect(mapStateToProps, {})(App);
