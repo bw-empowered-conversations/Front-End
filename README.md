@@ -55,8 +55,8 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 
 [ ] Create a branch <firstName-lastName> All of your commits will be made under this branch
 
-[ ] Download create-react-app
-[ ] Download your needed dependencies--axios, react-redux, styled-components, yup
+[X] Download create-react-app
+[X] Download your needed dependencies--axios, react-redux, styled-components, yup
 [ ] Set up components
 
 - React I
@@ -66,7 +66,7 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
     * Formik Validation?
 
  - React II
-    * axiosWithAuth
+    * [X] axiosWithAuth
     * Login page
     * Private Route
     * SignUp
