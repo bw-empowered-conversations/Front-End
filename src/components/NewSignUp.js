@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+import {useForm} from "react-hook-form";
 
 const WrapBackDiv = styled.div`
   height: 100vh;
@@ -46,9 +46,30 @@ const Label = styled.label`
 margin: 1rem 0;
 `
 
-const NewSignUp = () => {
-  const { register, handleSubmit } = useForm();
+const ButtonSpan = styled.button`
+    text-decoration: none;
+    border: none;
+    border-radius: 4px; 
+    font-size: 1.8rem;
+    text-align: center;
+    padding: 1.2rem 2rem;
+    display: flex;
+    align-items:center;
+    font-weight: 500;
+    background: #330272;
+    color: #fff;
+    width: 9.3rem;
+    margin: 1.5rem auto;
+    justify-content:center;
+    
+`
 
+
+const NewSignUp = () => {
+    const { register, handleSubmit, errors } = useForm()
+    const onSubmit= data => {
+        console.log(data)
+    }
   return (
     <>
       <WrapBackDiv>
@@ -56,18 +77,29 @@ const NewSignUp = () => {
           {" "}
           Join the Conversation
           <SubTextStyle>Creat an Account</SubTextStyle>
-          <FormStyle>
+          <FormStyle onSubmit={handleSubmit(onSubmit)}>
             <Label htmlFor="firstname">First Name</Label>
-            <Input label="firstname" name="firstname" ref={register} />
+            <Input
+                type="text"
+                id='firstname'
+                label="firstname" 
+                name="firstname" 
+                ref={register({required: true, minLength: 2})}  
+            />
+            {errors.firstname && errors.firstname.type === 'required' && <p>This is requried</p>}
+            {errors.firstname && errors.firstname.type === 'minLength' && <p>This field requires minimum length of 2</p>}
+        
             <Label htmlFor="lastname">Last Name</Label>
-            <Input label="lastname" name="lastname" ref={register} />
+            <Input label="lastname" name="lastname"  />
             <Label htmlFor="email">Email</Label>
-            <Input name="email" ref={register} />
+            <Input name="email" />
             <Label htmlFor="password">Password</Label>
-            <Input name="password" ref={register} />
+            <Input name="password"  />
             <Label htmlFor="confirm">Confirm</Label>
-            <Input name="confirm" ref={register} />
+            <Input name="confirm"  />
+            <ButtonSpan>Continue</ButtonSpan>
           </FormStyle>
+          
         </Modal>
       </WrapBackDiv>
     </>
