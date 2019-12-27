@@ -1,7 +1,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
-import BackColorHands from '../images/Welcome-Background.jpg'
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 
@@ -14,16 +13,11 @@ const WrapBackDiv = styled.div`
 `;
 
 const Modal = styled.div`
-  width: 70%;
-  
-  background-image: url(${BackColorHands });
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  width: 65%;
   border: white 1px solid;
   margin: auto;
   font-size: 3.5rem;
-  
+  background: white;
   padding: 4rem 0px;
   position: fixed;
   top: 50%;
@@ -33,13 +27,6 @@ const Modal = styled.div`
   .link-purple {
       color:#330272;
       font-size: 1.5rem;
-  }
-  .p-size {
-    font-size:1.5rem;
-    color: #828282
-  }
-  .margin-bottom {
-    margin-bottom: 8.5rem;
   }
 `;
 const FormStyle = styled.form`
@@ -55,7 +42,6 @@ const FormStyle = styled.form`
 `;
 const SubTextStyle = styled.div`
   font-size: 1.8rem;
-  padding: 1rem 0rem 2.2rem 0rem;
   color: #828282;
 `;
 
@@ -112,7 +98,7 @@ const  FFF = styled.div`
 `
 
 
-const SignIn = () => {
+const NewSignUp2 = () => {
     const { register, handleSubmit, errors, watch } = useForm()
     const onSubmit = data => {
         console.log(data)
@@ -122,42 +108,38 @@ const SignIn = () => {
             <WrapBackDiv>
                 <Modal>
                     {" "}
-                    Welcome Back
-          <SubTextStyle>Sign in with your email address </SubTextStyle>
+                    Join the Conversation
+          <SubTextStyle>Creat an Account</SubTextStyle>
                     <FormStyle onSubmit={handleSubmit(onSubmit)}>
-                    <Label htmlFor="email">Email</Label>
-                        <Input name="email"
-                            type="email"
-                            id='email'
-                            label="email"
-                            name="email"
+                        <Label htmlFor="emergency">Emergency Contact</Label>
+                        <Input
+                            type="text"
+                            id='emergency'
+                            label="emergency"
+                            name="emergency"
                             ref={register({ required: true, minLength: 2 })}
                         />
-                        {errors.email && errors.email.type === 'required' && <p className='red'>Email is requried</p>}
-                        {errors.email && errors.email.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
+                        {errors.emergency && errors.emergency.type === 'required' && <p className='red'>Emergency Contact is requried</p>}
+                        {errors.emergency && errors.emergency.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
 
-                        <Label className='margin-right' htmlFor="password">Password</Label>
-                        <Input className='margin-right' 
-                            name="password" 
-                            type="password"
-                            id='password'
-                            label="password"
-                            ref={register({ 
-                                required: 'You must specify a password', 
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must have at least 8 characters"
-                                }
-                             })}
+                        <Label htmlFor="phone">Phone Number</Label>
+                        <Input
+                            type="tel"
+                            id='phone'
+                            label="phone"
+                            name="phone"
+                            ref={register({ required: true, minLength: 10, pattern:  { value: /[0-9]{3}-[0-9]{3}-[0-9]{4}/, message:'invalid'}
+                            })}
                         />
-                        {errors.password && <p className='red'>{errors.password.message}</p>}
+                        {errors.phone && errors.phone.type === 'required' && <p className='red'>Phone Number is requried</p>}
+                        {errors.phone && errors.phone.type === 'minLength' && <p className='red'>This field requires minimum length of 7</p>}
+                        {errors.phone && errors.phone.type === 'pattern' && <p className='red'>Follow this format 530-654-8978</p>}
 
                         
 
                         <ButtonSpan>Continue</ButtonSpan>
                     </FormStyle>
-                 <p className='p-size'> If you don't have an account, </p>
-                 <p className='p-size margin-bottom'>  you can <span className='link-purple'>create one</span></p>
+                <p className='link-purple'> Back </p>
 
                 </Modal>
             </WrapBackDiv>
@@ -165,6 +147,4 @@ const SignIn = () => {
     );
 };
 
-
-
-export default SignIn
+export default NewSignUp2;
