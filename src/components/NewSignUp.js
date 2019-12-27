@@ -70,6 +70,7 @@ const ButtonSpan = styled.button`
     width: 9.3rem;
     margin: 2.4rem auto 1.5rem auto;
     justify-content:center;
+    cursor: pointer;
     
 `
 
@@ -102,6 +103,7 @@ const NewSignUp = () => {
     const { register, handleSubmit, errors, watch } = useForm()
     const onSubmit = data => {
         console.log(data)
+        window.location.href = 'newsignup2'
     }
     return (
         <>
@@ -178,7 +180,7 @@ const NewSignUp = () => {
 
                         <ButtonSpan>Continue</ButtonSpan>
                     </FormStyle>
-                <p className='link-purple'>I already have an Account</p>
+               <Link to='/'><p className='link-purple'>I already have an Account</p></Link>
 
                 </Modal>
             </WrapBackDiv>

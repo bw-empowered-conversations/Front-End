@@ -102,6 +102,7 @@ const NewSignUp2 = () => {
     const { register, handleSubmit, errors, watch } = useForm()
     const onSubmit = data => {
         console.log(data)
+        window.location.href = 'legal'
     }
     return (
         <>
@@ -139,7 +140,7 @@ const NewSignUp2 = () => {
 
                         <ButtonSpan>Continue</ButtonSpan>
                     </FormStyle>
-                <p className='link-purple'> Back </p>
+               <Link to='/newsignup'><p className='link-purple'> Back </p></Link> 
 
                 </Modal>
             </WrapBackDiv>

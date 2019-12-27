@@ -157,7 +157,7 @@ const SignIn = () => {
                         <ButtonSpan>Continue</ButtonSpan>
                     </FormStyle>
                  <p className='p-size'> If you don't have an account, </p>
-                 <p className='p-size margin-bottom'>  you can <span className='link-purple'>create one</span></p>
+                 <p className='p-size margin-bottom'>  you can <span className='link-purple'><Link to='/newsignup'>create one</Link></span></p>
 
                 </Modal>
             </WrapBackDiv>

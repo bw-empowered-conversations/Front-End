@@ -64,6 +64,7 @@ padding: 1rem 0rem;
 border: 1px solid #333333;
 border-radius: 4px;
 font-size:1.8rem;
+
 `
 const Label = styled.label`
 margin: 0rem 1rem;
@@ -92,13 +93,10 @@ const ButtonSpanLegal = styled.button`
     
 `
 
-
-
 const GGG = styled.div`
     display: flex;
-    flex-direction: row;
-    
-    
+    flex-direction: row-reverse;
+        
 `
     
   
