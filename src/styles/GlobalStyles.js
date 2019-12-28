@@ -9,11 +9,17 @@ const GlobalStyle = createGlobalStyle`
         margin:0;
         padding: 0;
         max-width:100%;
+
     }
     html { font-size: 62.5%; } 
 
     body {
         font-family: 'Roboto', sans-serif;
+        
+    }
+    a{
+        text-decoration: none;
+        color: inherit;
     }
 `
 

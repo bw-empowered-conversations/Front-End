@@ -30,8 +30,8 @@ const ButtonSpan = styled.span`
 export default function Header() {
     return (
     <WrapperDiv>
-       Empowered Conversations
-      <ButtonSpan>Sign Up</ButtonSpan>
+       <Link to ='/'>Empowered Conversations</Link>
+      <Link to='/newsignup'><ButtonSpan>Sign Up</ButtonSpan></Link>
     </WrapperDiv>
       
     );
