@@ -8,32 +8,45 @@ import SignIn from './components/SignIn'
 import Legal from './components/Legal'
 import GlobalStlye from './styles/GlobalStyles'
 import NewSignUp2 from './components/NewSignUp2'
+import Header2 from './components/Header2'
+import SearchConversations from './components/SearchConversations'
 
 
 function App() {
   return (
-
     <div className="App">
-
-      
-      <Route path='/'>
+      <Route path='/welcome'>
         <Header />
       </Route>
-      <Route exact path='/'>
+      <Route exact path='/welcome'>
         <SignIn />
       </Route>
-      <Route exact path='/newsignup'>
+      <Route exact path='/welcome/newsignup'>
         <NewSignUp />
       </Route>
-      <Route exact path='/newsignup2'>
+      <Route exact path='/welcome/newsignup2'>
         <NewSignUp2 />
       </Route>
 
-      <Route exact path='/legal'>
+      <Route exact path='/welcome/legal'>
         <Legal />
       </Route>
       
-     
+      <Route exact path='/welcome/conversations'>
+        <Header2 />
+      </Route>
+
+      <Route path='/loggedin'>
+        <Header2 />
+      </Route>
+      
+    <Route exact path ='/loggedin/conversations'>
+      <SearchConversations/>
+    </Route>
+
+
+
+
       <GlobalStlye />
 
     </div>
