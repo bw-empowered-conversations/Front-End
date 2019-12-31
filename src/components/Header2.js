@@ -15,24 +15,29 @@ const WrapperDiv = styled.header`
 `
 
 const ButtonSpan = styled.span`
-    border: 1px solid #fff;
-    border-radius: 4px; 
     font-size: 1.8rem;
     text-align: center;
-    padding: 1.2rem 2rem;
+    padding: .5rem 2rem;
     display: flex;
     align-items:center;
-    font-weight: 500;
+    font-weight: 500;    
+`
+const StyledDivSubWrap = styled.div`
+    display: flex;
+    width: 30%;
+    justify-content: space-between;
 `
 
 
-
 export default function Header() {
-
     return (
     <WrapperDiv>
-       <Link to ='/'>Empowered Conversations</Link>
-      <Link to='/newsignup'><ButtonSpan>Sign Up</ButtonSpan></Link>
+        <StyledDivSubWrap>
+       <Link>Conversations</Link>
+       <Link>Forums</Link>
+       <Link>Profile</Link>
+       </StyledDivSubWrap>
+     <ButtonSpan>New Conversation</ButtonSpan>
     </WrapperDiv>
       
     );
