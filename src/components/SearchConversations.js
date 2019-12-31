@@ -74,6 +74,8 @@ const SearchConversations = () => {
 
 
     return (
+        <div className="emergency-container">
+        <Header2 />
         <StyledWrapDiv>
             <StyledWrapSideDiv>
             <h2 className='h2side'>Search conversations</h2>
@@ -106,7 +108,8 @@ const SearchConversations = () => {
             </ModalCon>
 
         </StyledWrapDiv>
-        );
-    }
+        </div>
+    );
+}
 
-  export default SearchConversations
+export default SearchConversations
