@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, useEffect} from "react";
 import { Route, Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -29,7 +29,8 @@ const Modal = styled.div`
 `;
 
 const ModalCon = (props) => {
-
+ 
+ 
 
   if (props.show === true ) {
   return <Modal>HI
@@ -39,5 +40,8 @@ const ModalCon = (props) => {
   return null;
 }
 }
+
+
+
 
 export default ModalCon;
