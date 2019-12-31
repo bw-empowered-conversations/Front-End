@@ -1,12 +1,12 @@
-import React, { usestate, useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React, { useState } from "react";
+import Header from "./Header";
+import { Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import BackColorHands from '../images/Welcome-Background.jpg'
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
-const WrapBackDiv = styled.div`
+const WrapBackDiv = styled.div `
   height: 100vh;
   background-image: url(${Background});
   background-position: center;
@@ -61,6 +61,7 @@ const SubTextStyle = styled.div`
 `;
 
 const Input = styled.input`
+
 padding: 1rem 0rem;
 border: 1px solid #333333;
 border-radius: 4px;
@@ -112,59 +113,64 @@ const  FFF = styled.div`
    
 `
 
-
 const SignIn = () => {
-    const { register, handleSubmit, errors, watch } = useForm()
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: '' 
+    });
 
-    const [] = useState();
-    const onSubmit = data => {
-        console.log(data)
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleChange = e => {
+        setCredentials({
+            ...credentials, 
+            [e.target.name]: e.target.value
+        })
     }
+
+    const login = e => {
+        e.preventDefault();
+        setIsLoading(true)
+        axiosWithAuth()
+            .post('/login', credentials)
+            .then(res => {
+            localStorage.setItem('token', res.data.payload);
+            this.props.history.push('/protected') 
+             })
+            .catch(err => console.log('Data returned an error', err))
+    }
+
     return (
-        <>
-            <WrapBackDiv>
-                <Modal>
-                    {" "}
-                    Welcome Back
-          <SubTextStyle>Sign in with your email address </SubTextStyle>
-                    <FormStyle onSubmit={handleSubmit(onSubmit)}>
-                    <Label htmlFor="email">Email</Label>
-                        <Input name="email"
-                            type="email"
-                            id='email'
-                            label="email"
-                            name="email"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.email && errors.email.type === 'required' && <p className='red'>Email is requried</p>}
-                        {errors.email && errors.email.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
+        
+        <WrapBackDiv>
+        <Header />
+            <Modal>
+                {" "}
+                Welcome Back
+            <SubTextStyle>Sign in with your email address</SubTextStyle>
+            <FormStyle onSubmit={login}>
+                <Label htmlFor="email">Email:</Label>
+                        <Input 
+                        type="text"
+                        name="username"
+                        value={credentials.username} 
+                        onChange={handleChange} />
 
-                        <Label className='margin-right' htmlFor="password">Password</Label>
-                        <Input className='margin-right' 
-                            name="password" 
-                            type="password"
-                            id='password'
-                            label="password"
-                            ref={register({ 
-                                required: 'You must specify a password', 
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must have at least 8 characters"
-                                }
-                             })}
-                        />
-                        {errors.password && <p className='red'>{errors.password.message}</p>}
-
-                        
-
-                        <ButtonSpan>Continue</ButtonSpan>
-                    </FormStyle>
-                 <p className='p-size'> If you don't have an account, </p>
+                    <Label htmlFor="password">Password:</Label>
+                        <Input 
+                        type="text"
+                        name="password"
+                        value={credentials.password} 
+                        onChange={handleChange} />
+        
+                    <ButtonSpan>Continue</ButtonSpan>
+                    {isLoading && 'logging in'}
+            </FormStyle>
+            <p className='p-size'> If you don't have an account, </p>
                  <p className='p-size margin-bottom'>  you can <span className='link-purple'><Link to='/newsignup'>create one</Link></span></p>
 
-                </Modal>
-            </WrapBackDiv>
-        </>
+            </Modal>
+        </WrapBackDiv>
     );
 };
 
