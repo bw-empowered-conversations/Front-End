@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Header from "./Header";
 import { Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import BackColorHands from '../images/Welcome-Background.jpg'
@@ -112,8 +113,6 @@ const  FFF = styled.div`
    
 `
 
-
-
 const SignIn = () => {
     const [credentials, setCredentials] = useState({
         email: '',
@@ -142,7 +141,9 @@ const SignIn = () => {
     }
 
     return (
+        
         <WrapBackDiv>
+        <Header />
             <Modal>
                 {" "}
                 Welcome Back

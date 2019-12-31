@@ -16,12 +16,9 @@ import SearchConversations from './components/SearchConversations'
 function App() {
   return (
     <div className="App">
-      <Route path='/welcome'>
-        <Header />
-      </Route>
-      <Route exact path='/welcome'>
-        <SignIn />
-      </Route>
+      <Route exact path='/welcome' component={SignIn} />
+  
+      
       <Route exact path='/welcome/newsignup'>
         <NewSignUp />
       </Route>
