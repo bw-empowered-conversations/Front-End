@@ -101,6 +101,7 @@ const  FFF = styled.div`
 
 const NewSignUp2 = () => {
     const { register, handleSubmit, errors, watch } = useForm()
+    
     const onSubmit = data => {
         console.log(data)
         window.location.href = 'legal'

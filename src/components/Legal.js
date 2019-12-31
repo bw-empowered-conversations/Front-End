@@ -1,8 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import { Route, Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
-import BackColorHands from '../images/Welcome-Background.jpg'
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
 

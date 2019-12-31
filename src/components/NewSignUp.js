@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
@@ -102,6 +102,7 @@ const  FFF = styled.div`
 
 const NewSignUp = () => {
     const { register, handleSubmit, errors, watch } = useForm()
+
     const onSubmit = data => {
         console.log(data)
         window.location.href = 'newsignup2'
