@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Link } from "react-router-dom";
+import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
@@ -108,6 +109,7 @@ const NewSignUp = () => {
     return (
         <>
             <WrapBackDiv>
+                <Header />
                 <Modal>
                     {" "}
                     Join the Conversation

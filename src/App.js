@@ -16,19 +16,11 @@ import SearchConversations from './components/SearchConversations'
 function App() {
   return (
     <div className="App">
-      <Route exact path='/welcome' component={SignIn} />
-  
-      
-      <Route exact path='/welcome/newsignup'>
-        <NewSignUp />
-      </Route>
-      <Route exact path='/welcome/newsignup2'>
-        <NewSignUp2 />
-      </Route>
-
-      <Route exact path='/welcome/legal'>
-        <Legal />
-      </Route>
+       <Route exact path='/' component={NewSignUp} />
+       <Route path='/welcome' component={SignIn} />
+       <Route path='/emergency-contact' component={NewSignUp2} />
+       <Route path='/legal' component={Legal} />
+        
       
       <Route exact path='/welcome/conversations'>
         <Header2 />

@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import { Route, Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import BackColorHands from '../images/Welcome-Background.jpg'
@@ -98,11 +99,6 @@ const GGG = styled.div`
     flex-direction: row-reverse;
         
 `
-    
-  
-   
-
-
 
 const Legal = () => {
     const { register, handleSubmit, errors, watch, formState } = useForm({ mode: 'onChange'})
@@ -112,6 +108,7 @@ const Legal = () => {
     return (
         <>
             <WrapBackDiv>
+                <Header />
                 <ModalLegal>
                     {" "}
                     Legal Disclaimer
