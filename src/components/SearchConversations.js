@@ -1,8 +1,7 @@
 import React, {useState} from "react";
-import { Route, Link } from 'react-router-dom'
-import styled from 'styled-components'
-import ModalCon from './ModalCon'
-
+import Header2 from "./Header2";
+import styled from 'styled-components';
+import ModalCon from './ModalCon';
 
 const StyledWrapDiv = styled.div`
     display: flex;
@@ -75,40 +74,42 @@ const SearchConversations = () => {
 
 
     return (
-    <StyledWrapDiv>
-        <StyledWrapSideDiv>
-           <h2 className='h2side'>Search conversations</h2>
-           <div className='border'> 
-               <p className='pName'>hello</p>
-               <p className='pTopic'>hello</p>
-           </div>
-           <div className='border'> 
-               <p className='pName'>hello</p>
-               <p className='pTopic'>hello</p>
-           </div>
-           <div className='border'> 
-               <p className='pName'>hello</p>
-               <p className='pTopic'>hello</p>
-           </div>
-           <div className='border'> 
-               <p className='pName'>hello</p>
-               <p className='pTopic'>hello</p>
-           </div>
-                  
+        <div className="emergency-container">
+        <Header2 />
+        <StyledWrapDiv>
+            <StyledWrapSideDiv>
+            <h2 className='h2side'>Search conversations</h2>
+            <div className='border'> 
+                <p className='pName'>hello</p>
+                <p className='pTopic'>hello</p>
+            </div>
+            <div className='border'> 
+                <p className='pName'>hello</p>
+                <p className='pTopic'>hello</p>
+            </div>
+            <div className='border'> 
+                <p className='pName'>hello</p>
+                <p className='pTopic'>hello</p>
+            </div>
+            <div className='border'> 
+                <p className='pName'>hello</p>
+                <p className='pTopic'>hello</p>
+            </div>
+                    
 
-       </StyledWrapSideDiv>
-     <StyledMainContentDiv>
-         <p className='pTop'>You don't have a conversation selected</p>
-         <p className='pBottom'>Choose one from your existing conversations, or start a new one.</p>
-         <ButtonSpan  onClick={() => setShow(true)}>New Conversation</ButtonSpan>
-     </StyledMainContentDiv>
-        <ModalCon setShow={setShow} show={show}>
+        </StyledWrapSideDiv>
+        <StyledMainContentDiv>
+            <p className='pTop'>You don't have a conversation selected</p>
+            <p className='pBottom'>Choose one from your existing conversations, or start a new one.</p>
+            <ButtonSpan  onClick={() => setShow(true)}>New Conversation</ButtonSpan>
+        </StyledMainContentDiv>
+            <ModalCon setShow={setShow} show={show}>
 
-        </ModalCon>
+            </ModalCon>
 
-    </StyledWrapDiv>
-      
+        </StyledWrapDiv>
+        </div>
     );
-  }
+}
 
-  export default SearchConversations
+export default SearchConversations

@@ -89,7 +89,7 @@ const ButtonSpan = styled.button`
     
 `
 
-const  DDD = styled.div`
+ const  DDD = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -98,7 +98,7 @@ const  DDD = styled.div`
 `
 
 const  FFF = styled.div`
-    display:flex;
+    display: flex;
     flex-direction: column;
     width: 50%;
     

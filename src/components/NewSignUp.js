@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
+
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const WrapBackDiv = styled.div`
   height: 100vh;
@@ -101,92 +102,41 @@ const  FFF = styled.div`
 
 
 const NewSignUp = () => {
-    const { register, handleSubmit, errors, watch } = useForm()
-    const onSubmit = data => {
-        console.log(data)
-        window.location.href = 'newsignup2'
+    
+
+    const [credentials, setCredentials] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: ''
+    })
+
+    const [isLoading, setIsLoading] = useState(false);
+
+     const login = e => {
+        e.preventDefault();
+        setIsLoading(true)
+        axiosWithAuth()
+            .post('/login', credentials)
+            .then(res => {
+            localStorage.setItem('token', res.data.payload);
+            this.props.history.push('/protected') 
+             })
+            .catch(err => console.log('Data returned an error', err))
     }
+
+    const handleChange = e => {
+        setCredentials({
+            ...credentials,
+            [e.target.name]: e.target.value
+        })
+    }
+
+   
     return (
-        <>
-            <WrapBackDiv>
-                <Header />
-                <Modal>
-                    {" "}
-                    Join the Conversation
-          <SubTextStyle>Creat an Account</SubTextStyle>
-                    <FormStyle onSubmit={handleSubmit(onSubmit)}>
-                        <Label htmlFor="firstname">First Name</Label>
-                        <Input
-                            type="text"
-                            id='firstname'
-                            label="firstname"
-                            name="firstname"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.firstname && errors.firstname.type === 'required' && <p className='red'>First name is requried</p>}
-                        {errors.firstname && errors.firstname.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
-
-                        <Label htmlFor="lastname">Last Name</Label>
-                        <Input
-                            type="text"
-                            id='lasttname'
-                            label="lastname"
-                            name="lastname"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.lastname && errors.lastname.type === 'required' && <p className='red'>Last name is requried</p>}
-                        {errors.lastname && errors.lastname.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
-
-                        <Label htmlFor="email">Email</Label>
-                        <Input name="email"
-                            type="email"
-                            id='email'
-                            label="email"
-                            name="email"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.email && errors.email.type === 'required' && <p className='red'>Email is requried</p>}
-                        {errors.email && errors.email.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
-
-                    <DDD>
-                        <FFF>
-                        <Label className='margin-right' htmlFor="password">Password</Label>
-                        <Input className='margin-right' 
-                            name="password" 
-                            type="password"
-                            id='password'
-                            label="password"
-                            ref={register({ 
-                                required: 'You must specify a password', 
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must have at least 8 characters"
-                                }
-                             })}
-                        />
-                        {errors.password && <p className='red'>{errors.password.message}</p>}
-                        </FFF>
-
-                        <FFF>
-                        <Label className='margin-left'  htmlFor="confirm">Confirm</Label>
-                        <Input className='margin-left' 
-                            name="confirm" 
-                            type="confirm"
-                            id='confirm'
-                            label="confirm"
-                            ref={register({ validate:(value) => {return value === watch('password')}, required: true, minLength: 2 })}      
-                        />
-                            {errors.confirm && <p className='red'>Must match Password</p>}
-                            </FFF>
-                            </DDD>
-
-                        <ButtonSpan>Continue</ButtonSpan>
-                    </FormStyle>
-               <Link to='/'><p className='link-purple'>I already have an Account</p></Link>
-
-                </Modal>
-            </WrapBackDiv>
-        </>
+       <form>
+        
+       </form>
     );
 };
 
