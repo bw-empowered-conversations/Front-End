@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Link } from "react-router-dom";
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
@@ -99,21 +99,24 @@ const  FFF = styled.div`
     }
    
 `
-
-
 const NewSignUp = () => {
-    
-
-    const [credentials, setCredentials] = useState({
+     const [credentials, setCredentials] = useState({
         firstName: '',
         lastName: '',
         email: '',
-        password: ''
-    })
+        password: '' 
+    });
 
     const [isLoading, setIsLoading] = useState(false);
 
-     const login = e => {
+    const handleChange = e => {
+        setCredentials({
+            ...credentials, 
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const login = e => {
         e.preventDefault();
         setIsLoading(true)
         axiosWithAuth()
@@ -124,20 +127,41 @@ const NewSignUp = () => {
              })
             .catch(err => console.log('Data returned an error', err))
     }
-
-    const handleChange = e => {
-        setCredentials({
-            ...credentials,
-            [e.target.name]: e.target.value
-        })
-    }
-
    
     return (
-       <form>
+      <WrapBackDiv>
+        <Header />
+            <Modal>
+                {" "}
+                Welcome Back
+            <SubTextStyle>Sign in with your email address</SubTextStyle>
+            <FormStyle onSubmit={login}>
+                <Label htmlFor="email">Email:</Label>
+                        <Input 
+                        type="text"
+                        name="username"
+                        value={credentials.username} 
+                        onChange={handleChange} />
+
+                    <Label htmlFor="password">Password:</Label>
+                        <Input 
+                        type="text"
+                        name="password"
+                        value={credentials.password} 
+                        onChange={handleChange} />
         
-       </form>
+                    <ButtonSpan>Continue</ButtonSpan>
+                    {isLoading && 'logging in'}
+            </FormStyle>
+            <p className='p-size'> If you don't have an account, </p>
+                 <p className='p-size margin-bottom'>  you can <span className='link-purple'><Link to='/newsignup'>create one</Link></span></p>
+
+            </Modal>
+        </WrapBackDiv>
     );
 };
+
+
+
 
 export default NewSignUp;
