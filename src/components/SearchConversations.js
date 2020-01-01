@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { Route, Link } from 'react-router-dom'
 import styled from 'styled-components'
-import ModalCon from './ModalCon'
+import ModalConversation from './ModalConversation'
 
 
 const StyledWrapDiv = styled.div`
@@ -102,9 +102,9 @@ const SearchConversations = () => {
          <p className='pBottom'>Choose one from your existing conversations, or start a new one.</p>
          <ButtonSpan  onClick={() => setShow(true)}>New Conversation</ButtonSpan>
      </StyledMainContentDiv>
-        <ModalCon setShow={setShow} show={show}>
+        <ModalConversation setShow={setShow} show={show}>
 
-        </ModalCon>
+        </ModalConversation>
 
     </StyledWrapDiv>
       

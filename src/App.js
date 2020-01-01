@@ -10,6 +10,8 @@ import GlobalStlye from './styles/GlobalStyles'
 import NewSignUp2 from './components/NewSignUp2'
 import Header2 from './components/Header2'
 import SearchConversations from './components/SearchConversations'
+import ModalConversation from './components/ModalConversation';
+import ModalConversationTopic from './components/ModalConversationTopic'
 
 
 
@@ -32,6 +34,10 @@ function App() {
       
     <Route exact path ='/loggedin/conversations'>
       <SearchConversations/>
+    </Route>
+
+    <Route exact path ='/loggedin/conversations/topic'>
+      <ModalConversationTopic/>
     </Route>
 
 
