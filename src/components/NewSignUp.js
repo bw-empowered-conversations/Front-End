@@ -4,9 +4,8 @@ import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import './style.css';
 import styled from "styled-components";
-
-
 
 const WrapBackDiv = styled.div`
   height: 100vh;
@@ -33,28 +32,12 @@ const Modal = styled.div`
       font-size: 1.5rem;
   }
 `;
-const FormStyle = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-  margin: 1.5rem auto .1rem auto;
-  font-size: 1.5rem;
-  text-align: left;
-   .red {
-       color: red;
-   }
-`;
+
 const SubTextStyle = styled.div`
   font-size: 1.8rem;
   color: #828282;
 `;
 
-const Input = styled.input`
-padding: 1rem 0rem;
-border: 1px solid #333333;
-border-radius: 4px;
-font-size:1.8rem;
-`
 const Label = styled.label`
 margin: 1rem 0;
 `
@@ -101,27 +84,15 @@ const  FFF = styled.div`
     }
    
 `
-const validate = ({ firstName, lastName, email, password }) => {
+const validate = ({ username, password }) => {
 	const errors = {};
 
-	// validate firstName
-	if (!firstName) {
-		errors.firstName = 'Please enter your first name';
-	} else if (firstName.length < 2) {
-		errors.firstName = 'Your first name must have two characters or more';
+	// validate name
+	if (!username) {
+		errors.username = 'Please enter your username';
+	} else if (username.length < 7) {
+		errors.username = 'Your first name must have 7 characters or more';
     }
-    
-    // validate lastName
-	if (!lastName) {
-		errors.lastName = 'Please enter your last name';
-	} else if (lastName.length < 2) {
-		errors.lastName= 'Your last name must have two characters or more';
-    }
-    
-    // validate email
-	if (!email) {
-		errors.email = 'Please enter a valid email address';
-	} 
 
 	// validate password
 	if (!password) {
@@ -142,15 +113,13 @@ const NewSignUp = (props) => {
                 <SubTextStyle>Create an Account</SubTextStyle>
              <Formik 
                 initialValues={{
-                    firstName: '',
-                    lastName: '',
-                    email: '',
+                    username: '',
                     password: ''
                 }}  
 
                 onSubmit={(values, tools) => {
                     axiosWithAuth()
-                        .post('/register', values)
+                        .post('/auth/register', values)
                         .then(res => {
                             localStorage.setItem('token', res.data.token);
                             props.history.push('/welcome');
@@ -163,22 +132,13 @@ const NewSignUp = (props) => {
                 validate={validate}>
                {() => {
 						return (
-							<Form>
-				
-									<Label htmlFor='firstName'>First Name:</Label>
-									<Field name='firstName' type='text' />
-									<ErrorMessage name='firstName' component='div' className='red' />
-								
-									<Label htmlFor='lastName'>Last Name:</Label>
-									<Field name='lastName' type='text' />
-									<ErrorMessage name='lastName' component='div' className='error' />
-								
-									<Label htmlFor='email'>Email:</Label>
-									<Field name='email' type='text' />
+							<Form className='form-container'>
+									<Label htmlFor='username'>Username:</Label>
+									<Field name='username' type='text' placeholder='name@email' />
 									<ErrorMessage name='email' component='div' className='error' />
 							
 									<Label htmlFor='password'>Password:</Label>
-									<Field name='password' type='password' />
+									<Field name='password' type='password' placeholder='password' />
 									<ErrorMessage name='password' component='div' className='error' />
 							
 

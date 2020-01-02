@@ -113,7 +113,7 @@ const  FFF = styled.div`
    
 `
 
-const SignIn = () => {
+const SignIn = (props) => {
     const [credentials, setCredentials] = useState({
         email: '',
         password: '' 
@@ -132,10 +132,10 @@ const SignIn = () => {
         e.preventDefault();
         setIsLoading(true)
         axiosWithAuth()
-            .post('/login', credentials)
+            .post('/auth/login', credentials)
             .then(res => {
             localStorage.setItem('token', res.data.payload);
-            this.props.history.push('/conversations') 
+            props.history.push('/conversations') 
              })
             .catch(err => console.log('Data returned an error', err))
     }
@@ -163,7 +163,7 @@ const SignIn = () => {
                         onChange={handleChange} />
         
                     <ButtonSpan>Continue</ButtonSpan>
-                    {isLoading && 'logging in'}
+                   
             </FormStyle>
             <p className='p-size'> If you don't have an account, </p>
                  <p className='p-size margin-bottom'>  you can <span className='link-purple'><Link to='/newsignup'>create one</Link></span></p>
