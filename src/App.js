@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { Route, Link, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import NewSignUp from './components/NewSignUp'
 import SignIn from './components/SignIn'
 import Legal from './components/Legal'

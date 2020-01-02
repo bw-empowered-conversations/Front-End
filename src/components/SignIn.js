@@ -89,7 +89,7 @@ const ButtonSpan = styled.button`
     
 `
 
- const  DDD = styled.div`
+ /* const  DDD = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -111,15 +111,13 @@ const  FFF = styled.div`
         margin-left:5%;
     }
    
-`
+` */
 
 const SignIn = (props) => {
     const [credentials, setCredentials] = useState({
         email: '',
         password: '' 
     });
-
-    const [isLoading, setIsLoading] = useState(false);
 
     const handleChange = e => {
         setCredentials({
@@ -130,7 +128,6 @@ const SignIn = (props) => {
 
     const login = e => {
         e.preventDefault();
-        setIsLoading(true)
         axiosWithAuth()
             .post('/auth/login', credentials)
             .then(res => {

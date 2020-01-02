@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React from "react";
+import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
@@ -61,7 +61,7 @@ const ButtonSpan = styled.button`
     
 `
 
-const  DDD = styled.div`
+/*const  DDD = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -81,9 +81,9 @@ const  FFF = styled.div`
 
     .margin-left {
         margin-left:5%;
-    }
+    } 
    
-`
+`*/
 const validate = ({ username, password }) => {
 	const errors = {};
 
