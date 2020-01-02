@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Route, Link } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+import './style.css';
 import styled from "styled-components";
-
-import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const WrapBackDiv = styled.div`
   height: 100vh;
@@ -31,28 +32,12 @@ const Modal = styled.div`
       font-size: 1.5rem;
   }
 `;
-const FormStyle = styled.form`
-  display: flex;
-  flex-direction: column;
-  width: 45%;
-  margin: 1.5rem auto .1rem auto;
-  font-size: 1.5rem;
-  text-align: left;
-   .red {
-       color: red;
-   }
-`;
+
 const SubTextStyle = styled.div`
   font-size: 1.8rem;
   color: #828282;
 `;
 
-const Input = styled.input`
-padding: 1rem 0rem;
-border: 1px solid #333333;
-border-radius: 4px;
-font-size:1.8rem;
-`
 const Label = styled.label`
 margin: 1rem 0;
 `
@@ -99,45 +84,75 @@ const  FFF = styled.div`
     }
    
 `
+const validate = ({ username, password }) => {
+	const errors = {};
 
-
-const NewSignUp = () => {
-    
-
-    const [credentials, setCredentials] = useState({
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: ''
-    })
-
-    const [isLoading, setIsLoading] = useState(false);
-
-     const login = e => {
-        e.preventDefault();
-        setIsLoading(true)
-        axiosWithAuth()
-            .post('/login', credentials)
-            .then(res => {
-            localStorage.setItem('token', res.data.payload);
-            this.props.history.push('/protected') 
-             })
-            .catch(err => console.log('Data returned an error', err))
+	// validate name
+	if (!username) {
+		errors.username = 'Please enter your username';
+	} else if (username.length < 7) {
+		errors.username = 'Your first name must have 7 characters or more';
     }
 
-    const handleChange = e => {
-        setCredentials({
-            ...credentials,
-            [e.target.name]: e.target.value
-        })
-    }
+	// validate password
+	if (!password) {
+		errors.password = 'Please enter a password';
+	} else if (password.length < 5) {
+		errors.password = 'Your password must have five characters or more';
+	}
+	return errors;
+};
 
-   
+const NewSignUp = (props) => {
     return (
-       <form>
-        
-       </form>
+        <WrapBackDiv>
+            <Header />
+            <Modal>
+                {" "}
+                Join the Conversation
+                <SubTextStyle>Create an Account</SubTextStyle>
+             <Formik 
+                initialValues={{
+                    username: '',
+                    password: ''
+                }}  
+
+                onSubmit={(values, tools) => {
+                    axiosWithAuth()
+                        .post('/auth/register', values)
+                        .then(res => {
+                            localStorage.setItem('token', res.data.token);
+                            props.history.push('/welcome');
+                            tools.resetForm();
+                        })
+                        .catch(err => {
+                            console.log('Data returned an error', err)
+                        })
+                }}
+                validate={validate}>
+               {() => {
+						return (
+							<Form className='form-container'>
+									<Label htmlFor='username'>Username:</Label>
+									<Field name='username' type='text' placeholder='name@email' />
+									<ErrorMessage name='email' component='div' className='error' />
+							
+									<Label htmlFor='password'>Password:</Label>
+									<Field name='password' type='password' placeholder='password' />
+									<ErrorMessage name='password' component='div' className='error' />
+							
+
+								<ButtonSpan type='submit'>Continue</ButtonSpan>
+							</Form>
+						);
+					}}
+            </Formik>
+            <Link to='/'><p className='link-purple'>I already have an Account</p></Link>
+            </Modal>
+        </WrapBackDiv>
+    
     );
 };
 
 export default NewSignUp;
+

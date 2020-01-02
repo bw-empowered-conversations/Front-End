@@ -32,7 +32,7 @@ export default function Header() {
     return (
     <WrapperDiv>
        <Link to ='/'>Empowered Conversations</Link>
-      <Link to='/newsignup'><ButtonSpan>Sign Up</ButtonSpan></Link>
+      <Link to='/'><ButtonSpan>Sign Up</ButtonSpan></Link>
     </WrapperDiv>
       
     );

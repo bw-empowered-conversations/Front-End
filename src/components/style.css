@@ -1,0 +1,19 @@
+.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  margin: 1.5rem auto .1rem auto;
+  font-size: 1.5rem;
+  text-align: left;
+}
+
+.form-container .red {
+    color: red;
+}
+
+input {
+    padding: 1rem 0rem;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    font-size:1.8rem;
+}
