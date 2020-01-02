@@ -135,7 +135,7 @@ const SignIn = () => {
             .post('/login', credentials)
             .then(res => {
             localStorage.setItem('token', res.data.payload);
-            this.props.history.push('/protected') 
+            this.props.history.push('/conversations') 
              })
             .catch(err => console.log('Data returned an error', err))
     }

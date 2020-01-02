@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Route, Link } from "react-router-dom";
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 import styled from "styled-components";
-import { useForm } from "react-hook-form";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+
 
 const WrapBackDiv = styled.div`
   height: 100vh;
@@ -99,99 +101,96 @@ const  FFF = styled.div`
     }
    
 `
+const validate = ({ firstName, lastName, email, password }) => {
+	const errors = {};
 
-const NewSignUp = () => {
-    const { register, handleSubmit, errors, watch } = useForm()
-
+	// validate firstName
+	if (!firstName) {
+		errors.firstName = 'Please enter your first name';
+	} else if (firstName.length < 2) {
+		errors.firstName = 'Your first name must have two characters or more';
+    }
     
+    // validate lastName
+	if (!lastName) {
+		errors.lastName = 'Please enter your last name';
+	} else if (lastName.length < 2) {
+		errors.lastName= 'Your last name must have two characters or more';
+    }
+    
+    // validate email
+	if (!email) {
+		errors.email = 'Please enter a valid email address';
+	} 
 
-    const onSubmit = data => {
-        console.log(data)
-        window.location.href = 'emergency-contact'
-    } 
+	// validate password
+	if (!password) {
+		errors.password = 'Please enter a password';
+	} else if (password.length < 5) {
+		errors.password = 'Your password must have five characters or more';
+	}
+	return errors;
+};
 
+const NewSignUp = (props) => {
     return (
-        <>
-            <WrapBackDiv>
-                <Header />
-                <Modal>
-                    {" "}
-                    Join the Conversation
-          <SubTextStyle>Creat an Account</SubTextStyle>
-                    <FormStyle onSubmit={handleSubmit(onSubmit)}>
-                        <Label htmlFor="firstname">First Name</Label>
-                        <Input
-                            type="text"
-                            id='firstname'
-                            label="firstname"
-                            name="firstname"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.firstname && errors.firstname.type === 'required' && <p className='red'>First name is requried</p>}
-                        {errors.firstname && errors.firstname.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
+        <WrapBackDiv>
+            <Header />
+            <Modal>
+                {" "}
+                Join the Conversation
+                <SubTextStyle>Create an Account</SubTextStyle>
+             <Formik 
+                initialValues={{
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: ''
+                }}  
 
-                        <Label htmlFor="lastname">Last Name</Label>
-                        <Input
-                            type="text"
-                            id='lasttname'
-                            label="lastname"
-                            name="lastname"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.lastname && errors.lastname.type === 'required' && <p className='red'>Last name is requried</p>}
-                        {errors.lastname && errors.lastname.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
+                onSubmit={(values, tools) => {
+                    axiosWithAuth()
+                        .post('/register', values)
+                        .then(res => {
+                            localStorage.setItem('token', res.data.token);
+                            props.history.push('/welcome');
+                            tools.resetForm();
+                        })
+                        .catch(err => {
+                            console.log('Data returned an error', err)
+                        })
+                }}
+                validate={validate}>
+               {() => {
+						return (
+							<Form>
+				
+									<Label htmlFor='firstName'>First Name:</Label>
+									<Field name='firstName' type='text' />
+									<ErrorMessage name='firstName' component='div' className='red' />
+								
+									<Label htmlFor='lastName'>Last Name:</Label>
+									<Field name='lastName' type='text' />
+									<ErrorMessage name='lastName' component='div' className='error' />
+								
+									<Label htmlFor='email'>Email:</Label>
+									<Field name='email' type='text' />
+									<ErrorMessage name='email' component='div' className='error' />
+							
+									<Label htmlFor='password'>Password:</Label>
+									<Field name='password' type='password' />
+									<ErrorMessage name='password' component='div' className='error' />
+							
 
-                        <Label htmlFor="email">Email</Label>
-                        <Input name="email"
-                            type="email"
-                            id='email'
-                            label="email"
-                            name="email"
-                            ref={register({ required: true, minLength: 2 })}
-                        />
-                        {errors.email && errors.email.type === 'required' && <p className='red'>Email is requried</p>}
-                        {errors.email && errors.email.type === 'minLength' && <p className='red'>This field requires minimum length of 2</p>}
-
-                    <DDD>
-                        <FFF>
-                        <Label className='margin-right' htmlFor="password">Password</Label>
-                        <Input className='margin-right' 
-                            name="password" 
-                            type="password"
-                            id='password'
-                            label="password"
-                            ref={register({ 
-                                required: 'You must specify a password', 
-                                minLength: {
-                                    value: 8,
-                                    message: "Password must have at least 8 characters"
-                                }
-                             })}
-                        />
-                        {errors.password && <p className='red'>{errors.password.message}</p>}
-                        </FFF>
-
-                        <FFF>
-                        <Label className='margin-left'  htmlFor="confirm">Confirm</Label>
-                        <Input className='margin-left' 
-                            name="confirm" 
-                            type="confirm"
-                            id='confirm'
-                            label="confirm"
-                            ref={register({ validate:(value) => {return value === watch('password')}, required: true, minLength: 2 })}      
-                        />
-                            {errors.confirm && <p className='red'>Must match Password</p>}
-                            </FFF>
-                            </DDD>
-
-                        <ButtonSpan>Continue</ButtonSpan>
-                        
-                    </FormStyle>
-               <Link to='/'><p className='link-purple'>I already have an Account</p></Link>
-
-                </Modal>
-            </WrapBackDiv>
-        </>
+								<ButtonSpan type='submit'>Continue</ButtonSpan>
+							</Form>
+						);
+					}}
+            </Formik>
+            <Link to='/'><p className='link-purple'>I already have an Account</p></Link>
+            </Modal>
+        </WrapBackDiv>
+    
     );
 };
 
