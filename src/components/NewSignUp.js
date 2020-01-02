@@ -87,16 +87,17 @@ const  FFF = styled.div`
 const validate = ({ username, password }) => {
 	const errors = {};
 
-	// validate name
+	// validate username
 	if (!username) {
-		errors.username = 'Please enter your username';
+		 errors.username = 'Please enter your username';
 	} else if (username.length < 7) {
 		errors.username = 'Your first name must have 7 characters or more';
     }
 
+
 	// validate password
 	if (!password) {
-		errors.password = 'Please enter a password';
+		 errors.password = 'Please enter a password';
 	} else if (password.length < 5) {
 		errors.password = 'Your password must have five characters or more';
 	}
@@ -135,11 +136,11 @@ const NewSignUp = (props) => {
 							<Form className='form-container'>
 									<Label htmlFor='username'>Username:</Label>
 									<Field name='username' type='text' placeholder='name@email' />
-									<ErrorMessage name='email' component='div' className='error' />
+									<ErrorMessage name='username' component='div' className='red' />
 							
 									<Label htmlFor='password'>Password:</Label>
 									<Field name='password' type='password' placeholder='password' />
-									<ErrorMessage name='password' component='div' className='error' />
+									<ErrorMessage name='password' component='div' className='red' />
 							
 
 								<ButtonSpan type='submit'>Continue</ButtonSpan>
