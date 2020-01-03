@@ -45,7 +45,7 @@ const ButtonSpanGreen = styled.button`
     background:none;
     border-radius: 4px; 
     font-size: 1.8rem;
-    padding: 1.4rem 0;
+    padding: 1.4rem 0;;
     font-weight: 500;
     width: 17.6rem;
     text-align:center;

@@ -31,13 +31,13 @@ const ButtonSpan = styled.button`
 `
 
 
-const NewConversation = () => {
+const NewConversation = (props) => {
 
   return (
     <StyledMainContentDiv>
       <p className='pTop'>You don't have a conversation selected</p>
       <p className='pBottom'>Choose one from your existing conversations, or start a new one.</p>
-      <ButtonSpan> New Conversation</ButtonSpan>
+      <ButtonSpan onClick={() => props.setShow(true)}> New Conversation</ButtonSpan>
     </StyledMainContentDiv>
 
   );
