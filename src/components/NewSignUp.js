@@ -148,7 +148,7 @@ const NewSignUp = (props) => {
 						);
 					}}
             </Formik>
-            <Link to='/'><p className='link-purple'>I already have an Account</p></Link>
+            <Link to='/welcome'><p className='link-purple'>I already have an Account</p></Link>
             </Modal>
         </WrapBackDiv>
     

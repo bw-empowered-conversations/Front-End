@@ -1,17 +1,23 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Header2 from "./Header2";
 import styled from 'styled-components';
 import ModalConversation from './ModalConversation';
+import NewConversation from './NewConversation'
+import PendingConversation from './PendingConversation'
+import InvitationConversation from './InvitationConversation'
 
 const StyledWrapDiv = styled.div`
     display: flex;
     border: 1px solid grey;
+  
+    
     
 `
 const StyledWrapSideDiv = styled.div`
     border: 1px solid grey;  
     height: 100vh;
     width: 25%;
+    
 
     .h2side {
         background:#f2f2f2;
@@ -72,42 +78,44 @@ const ButtonSpan = styled.button`
 const SearchConversations = () => {
     const [show, setShow] = useState(false)
 
-
     return (
         <div className="emergency-container">
-        <Header2 />
-        <StyledWrapDiv>
-            <StyledWrapSideDiv>
-            <h2 className='h2side'>Search conversations</h2>
-            <div className='border'> 
-                <p className='pName'>hello</p>
-                <p className='pTopic'>hello</p>
-            </div>
-            <div className='border'> 
-                <p className='pName'>hello</p>
-                <p className='pTopic'>hello</p>
-            </div>
-            <div className='border'> 
-                <p className='pName'>hello</p>
-                <p className='pTopic'>hello</p>
-            </div>
-            <div className='border'> 
-                <p className='pName'>hello</p>
-                <p className='pTopic'>hello</p>
-            </div>
-                    
+            <Header2 />
+            <StyledWrapDiv>
+                <StyledWrapSideDiv>
+                    <h2 className='h2side'>Search conversations</h2>
+                    <div className='border'>
+                        <p className='pName'>hello</p>
+                        <p className='pTopic'>hello</p>
+                    </div>
+                    <div className='border'>
+                        <p className='pName'>hello</p>
+                        <p className='pTopic'>hello</p>
+                    </div>
+                    <div className='border'>
+                        <p className='pName'>hello</p>
+                        <p className='pTopic'>hello</p>
+                    </div>
+                    <div className='border'>
+                        <p className='pName'>hello</p>
+                        <p className='pTopic'>hello</p>
+                    </div>
 
-        </StyledWrapSideDiv>
-        <StyledMainContentDiv>
+
+                </StyledWrapSideDiv>
+                {/* <NewConversation />
+                <PendingConversation/> */}
+                <InvitationConversation/>
+                {/* <StyledMainContentDiv>
             <p className='pTop'>You don't have a conversation selected</p>
             <p className='pBottom'>Choose one from your existing conversations, or start a new one.</p>
             <ButtonSpan  onClick={() => setShow(true)}>New Conversation</ButtonSpan>
-        </StyledMainContentDiv>
-            <ModalConversation setShow={setShow} show={show}>
+        </StyledMainContentDiv> */}
+                <ModalConversation setShow={setShow} show={show}>
 
-            </ModalConversation>
+                </ModalConversation>
 
-        </StyledWrapDiv>
+            </StyledWrapDiv>
         </div>
     );
 }
