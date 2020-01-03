@@ -10,6 +10,8 @@ import Emergency from './components/Emergency'
 import SearchConversations from './components/SearchConversations'
 import PrivateRoute from './components/PrivateRoute';
 import UserProfile from './components/UserProfile';
+import ModalConversationTopic from './components/ModalConversationTopic'
+
 
 function App() {
   return (
@@ -24,6 +26,9 @@ function App() {
         <Route path='/welcome' component={SignIn} />
        
       </Switch>
+
+      <Route exact  path='/loggedin/conversations/Topic' component={ModalConversationTopic} />
+      <Route exact  path='/loggedin/conversations' component={SearchConversations} />
 
       <GlobalStlye />
 
