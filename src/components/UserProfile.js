@@ -84,46 +84,53 @@ const  FFF = styled.div`
     } 
    
 `*/
-const validate = ({ username, password }) => {
+const validate = ({ name, phone, email }) => {
 	const errors = {};
 
-	// validate username
-	if (!username) {
-		 errors.username = 'Please enter your username';
-	} else if (username.length < 7) {
-		errors.username = 'Your first name must have 7 characters or more';
+	// validate name
+	if (!name) {
+		 errors.name = 'Please enter your name';
+	} else if (name.length < 2) {
+		errors.name = 'Your first name must have 2 characters or more';
     }
 
-
-	// validate password
-	if (!password) {
-		 errors.password = 'Please enter a password';
-	} else if (password.length < 5) {
-		errors.password = 'Your password must have five characters or more';
-	}
+	// validate phone #
+	if (!phone) {
+		 errors.phone = 'Please enter a valid phone #';
+	} else if (phone.length < 12) {
+		errors.phone = 'Your phone# must have 10 numbers and include dashes';
+    }
+    
+    //validate email
+    if(!email) {
+        errors.email = 'Please enter a valid email address'
+    }else if (email.length < 11) {
+        errors.email = 'Your email must have at least 11 characters or more'
+    }
 	return errors;
 };
 
-const NewSignUp = (props) => {
+const UserProfile = (props) => {
     return (
         <WrapBackDiv>
             <Header />
             <Modal>
                 {" "}
-                Join the Conversation
-                <SubTextStyle>Create an Account</SubTextStyle>
+                User Profile
+                <SubTextStyle>Give Us A Few More Details</SubTextStyle>
              <Formik 
                 initialValues={{
-                    username: '',
-                    password: ''
+                    name: '',
+                    phone: '',
+                    email: ''
                 }}  
 
                 onSubmit={(values, tools) => {
                     axiosWithAuth()
-                        .post('/auth/register', values)
+                        .post('/user/details', values)
                         .then(res => {
                             localStorage.setItem('token', res.data.token);
-                            props.history.push('/user-profile');
+                            props.history.push('/welcome');
                             tools.resetForm();
                         })
                         .catch(err => {
@@ -134,13 +141,17 @@ const NewSignUp = (props) => {
                {() => {
 						return (
 							<Form className='form-container'>
-									<Label htmlFor='username'>Username:</Label>
-									<Field name='username' type='text' placeholder='username' />
-									<ErrorMessage name='username' component='div' className='red' />
+									<Label htmlFor='name'>Name:</Label>
+									<Field name='Name' type='text' placeholder='John Doe' />
+									<ErrorMessage name='name' component='div' className='red' />
 							
-									<Label htmlFor='password'>Password:</Label>
-									<Field name='password' type='password' placeholder='password' />
-									<ErrorMessage name='password' component='div' className='red' />
+									<Label htmlFor='phone'>Phone #:</Label>
+									<Field name='phone' type='text' placeholder='555-123-4567' />
+                                    <ErrorMessage name='phone' component='div' className='red' />
+                                    
+									<Label htmlFor='email'>Email:</Label>
+									<Field name='email' type='text' placeholder='name@email.com' />
+									<ErrorMessage name='email' component='div' className='red' />
 							
 
 								<ButtonSpan type='submit'>Continue</ButtonSpan>
@@ -155,5 +166,5 @@ const NewSignUp = (props) => {
     );
 };
 
-export default NewSignUp;
+export default UserProfile;
 

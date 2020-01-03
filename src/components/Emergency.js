@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import Header from "./Header";
 import styled from "styled-components";
@@ -74,7 +74,7 @@ const ButtonSpan = styled.button`
     
 `
 
-const  DDD = styled.div`
+/* const  DDD = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -96,11 +96,11 @@ const  FFF = styled.div`
         margin-left:5%;
     }
    
-`
+` */
 
 
 const NewSignUp2 = () => {
-    const { register, handleSubmit, errors, watch } = useForm()
+    const { register, handleSubmit, errors } = useForm()
     
     const onSubmit = data => {
         console.log(data)

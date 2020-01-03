@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import { Route, Link, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import NewSignUp from './components/NewSignUp'
 import SignIn from './components/SignIn'
 import Legal from './components/Legal'
@@ -9,7 +9,9 @@ import GlobalStlye from './styles/GlobalStyles'
 import Emergency from './components/Emergency'
 import SearchConversations from './components/SearchConversations'
 import PrivateRoute from './components/PrivateRoute';
+import UserProfile from './components/UserProfile';
 import ModalConversationTopic from './components/ModalConversationTopic'
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
        <Route exact path='/' component={NewSignUp} />
        <Route path='/emergency-contact' component={Emergency} />
        <Route path='/legal' component={Legal} />
+       <Route path='/user-profile' component={UserProfile} />
 
       <Switch>
         <PrivateRoute path='/conversations' component={SearchConversations} />

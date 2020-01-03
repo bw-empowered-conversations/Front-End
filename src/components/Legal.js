@@ -99,7 +99,7 @@ const GGG = styled.div`
 `
 
 const Legal = () => {
-    const { register, handleSubmit, errors, watch, formState } = useForm({ mode: 'onChange'})
+    const { register, handleSubmit, errors, formState } = useForm({ mode: 'onChange'})
     const onSubmit = data => {
         console.log(data)
     }
