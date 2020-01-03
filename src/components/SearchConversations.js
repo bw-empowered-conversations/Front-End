@@ -5,6 +5,7 @@ import ModalConversation from './ModalConversation';
 import NewConversation from './NewConversation'
 import PendingConversation from './PendingConversation'
 import InvitationConversation from './InvitationConversation'
+import OngoingConversationWrap from './OngoingConversationWrap'
 
 const StyledWrapDiv = styled.div`
     display: flex;
@@ -103,14 +104,8 @@ const SearchConversations = () => {
 
 
                 </StyledWrapSideDiv>
-                {/* <NewConversation />
-                <PendingConversation/> */}
-                <InvitationConversation/>
-                {/* <StyledMainContentDiv>
-            <p className='pTop'>You don't have a conversation selected</p>
-            <p className='pBottom'>Choose one from your existing conversations, or start a new one.</p>
-            <ButtonSpan  onClick={() => setShow(true)}>New Conversation</ButtonSpan>
-        </StyledMainContentDiv> */}
+                <NewConversation setShow={setShow} show={show}/>
+             
                 <ModalConversation setShow={setShow} show={show}>
 
                 </ModalConversation>
