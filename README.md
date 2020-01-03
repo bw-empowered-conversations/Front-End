@@ -43,7 +43,7 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 
 - Planning and developing a state management system for your application
 - Handle HTTP requests for all CRUD methods
-- Implementing client-side authentication in conjunction with the BE developer
+- [X] Implementing client-side authentication in conjunction with the BE developer
 - Implementing industry standards in regards to the way that you manage state in your React application.
 - Implement some testing into your application
 - Your application should be built to demonstrate that your app solves the problem your team set out to solve. Focus the displaying of information and working with other members of your team to ensure that users can seamlessly navigate through the tools that you’re building.
@@ -53,7 +53,7 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 
 ## Project Setup
 
-[ ] Create a branch <firstName-lastName> All of your commits will be made under this branch
+[X] Create a branch <firstName-lastName> All of your commits will be made under this branch
 
 [X] Download create-react-app
 [X] Download your needed dependencies--axios, react-redux, styled-components, yup
@@ -67,10 +67,10 @@ As a Front End Framework Developer, you are tasked to work in conjunction with t
 
  - React II
     * [X] axiosWithAuth
-    * Login page
-    * Private Route
-    * SignUp
-    * Register
+    * [X] Login page
+    * [X] Private Route
+    * [X] SignUp
+    * [X] Register
     * Testing
 
 

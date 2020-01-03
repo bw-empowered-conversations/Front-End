@@ -9,6 +9,7 @@ import GlobalStlye from './styles/GlobalStyles'
 import Emergency from './components/Emergency'
 import SearchConversations from './components/SearchConversations'
 import PrivateRoute from './components/PrivateRoute';
+import UserProfile from './components/UserProfile';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
        <Route exact path='/' component={NewSignUp} />
        <Route path='/emergency-contact' component={Emergency} />
        <Route path='/legal' component={Legal} />
+       <Route path='/user-profile' component={UserProfile} />
 
       <Switch>
         <PrivateRoute path='/conversations' component={SearchConversations} />

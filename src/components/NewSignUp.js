@@ -123,7 +123,7 @@ const NewSignUp = (props) => {
                         .post('/auth/register', values)
                         .then(res => {
                             localStorage.setItem('token', res.data.token);
-                            props.history.push('/welcome');
+                            props.history.push('/user-profile');
                             tools.resetForm();
                         })
                         .catch(err => {
@@ -135,7 +135,7 @@ const NewSignUp = (props) => {
 						return (
 							<Form className='form-container'>
 									<Label htmlFor='username'>Username:</Label>
-									<Field name='username' type='text' placeholder='name@email' />
+									<Field name='username' type='text' placeholder='username' />
 									<ErrorMessage name='username' component='div' className='red' />
 							
 									<Label htmlFor='password'>Password:</Label>
