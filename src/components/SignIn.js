@@ -1,11 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import BackColorHands from '../images/Welcome-Background.jpg'
 import styled from "styled-components";
-//import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { Field, reduxForm } from 'redux-form';
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const WrapBackDiv = styled.div `
   height: 100vh;
@@ -61,13 +60,13 @@ const SubTextStyle = styled.div`
   color: #828282;
 `;
 
-/* const Input = styled.input`
+const Input = styled.input`
 
 padding: 1rem 0rem;
 border: 1px solid #333333;
 border-radius: 4px;
 font-size:1.8rem;
-` */
+`
 const Label = styled.label`
 margin: 1rem 0;
 `
@@ -114,16 +113,20 @@ const  FFF = styled.div`
    
 ` */
 
-const SignInFunc = (props) => {
-    
-    /* const handleChange = e => {
+const SignIn = (props) => {
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: '' 
+    });
+
+    const handleChange = e => {
         setCredentials({
             ...credentials, 
             [e.target.name]: e.target.value
         })
     }
 
-   const login = (e) => {
+    const login = e => {
         e.preventDefault();
         axiosWithAuth()
             .post('/auth/login', credentials)
@@ -132,8 +135,7 @@ const SignInFunc = (props) => {
             props.history.push('/conversations') 
              })
             .catch(err => console.log('Data returned an error', err))
-    } */
-
+    }
 
     return (
         <WrapBackDiv>
@@ -142,13 +144,23 @@ const SignInFunc = (props) => {
                 {" "}
                 Welcome Back
             <SubTextStyle>Sign in with your email address</SubTextStyle>
-            <FormStyle onSubmit={props.handleSubmit}>
-                <Label htmlFor='email'>Email:</Label>
-                <Field name='email' component='input' type='email' />
+            <FormStyle onSubmit={login}>
+                <Label htmlFor="email">Email:</Label>
+                        <Input 
+                        type="text"
+                        name="username"
+                        value={credentials.username} 
+                        onChange={handleChange} />
 
-                <Label htmlFor='password'>Password:</Label>
-                <Field name='password' component='input' type='password' />
-                <ButtonSpan>Continue</ButtonSpan> 
+                    <Label htmlFor="password">Password:</Label>
+                        <Input 
+                        type="text"
+                        name="password"
+                        value={credentials.password} 
+                        onChange={handleChange} />
+        
+                    <ButtonSpan>Continue</ButtonSpan>
+                   
             </FormStyle>
             <p className='p-size'> If you don't have an account, </p>
                  <p className='p-size margin-bottom'>  you can <span className='link-purple'><Link to='/'>create one</Link></span></p>
@@ -158,10 +170,6 @@ const SignInFunc = (props) => {
     );
 };
 
-const SignIn = reduxForm({
-    form: 'signin'
-})(SignInFunc);
 
+export default SignIn
 
-
-export default SignIn;
