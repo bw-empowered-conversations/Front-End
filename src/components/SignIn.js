@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import Header from "./Header";
 import { Link } from "react-router-dom";
 import Background from "../images/backhandsblur.jpg";
 import BackColorHands from '../images/Welcome-Background.jpg'
 import styled from "styled-components";
-import { axiosWithAuth } from '../utils/axiosWithAuth';
+//import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { Field, reduxForm } from 'redux-form';
 
 const WrapBackDiv = styled.div `
@@ -61,13 +61,13 @@ const SubTextStyle = styled.div`
   color: #828282;
 `;
 
-const Input = styled.input`
+/* const Input = styled.input`
 
 padding: 1rem 0rem;
 border: 1px solid #333333;
 border-radius: 4px;
 font-size:1.8rem;
-`
+` */
 const Label = styled.label`
 margin: 1rem 0;
 `
@@ -115,11 +115,7 @@ const  FFF = styled.div`
 ` */
 
 const SignInFunc = (props) => {
-    const [credentials, setCredentials] = useState({
-        email: '',
-        password: '' 
-    });
-
+    
     /* const handleChange = e => {
         setCredentials({
             ...credentials, 
