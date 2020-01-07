@@ -3,9 +3,7 @@ import Header2 from "./Header2";
 import styled from 'styled-components';
 import ModalConversation from './ModalConversation';
 import NewConversation from './NewConversation'
-import PendingConversation from './PendingConversation'
-import InvitationConversation from './InvitationConversation'
-import OngoingConversationWrap from './OngoingConversationWrap'
+
 
 const StyledWrapDiv = styled.div`
     display: flex;
@@ -47,7 +45,7 @@ const StyledWrapSideDiv = styled.div`
 
 
 
-const StyledMainContentDiv = styled.div`
+/* const StyledMainContentDiv = styled.div`
       width: 75%;
       align-self: center;
       flex-direction:column;
@@ -63,7 +61,7 @@ const StyledMainContentDiv = styled.div`
           font-size: 1.8rem;
       }
 
-`
+` 
 const ButtonSpan = styled.button`
     border: 1px solid #4E09A6;
     color: #4E09A6;
@@ -73,7 +71,7 @@ const ButtonSpan = styled.button`
     font-weight: 500;
     width: 19.2rem;
     text-align:center;
-`
+` */
 
 
 const SearchConversations = () => {

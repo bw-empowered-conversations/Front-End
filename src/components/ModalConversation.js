@@ -1,5 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import ContactModalConversation from './ContactModalConversation'
 
@@ -53,13 +52,13 @@ padding: 1.2rem 0 1.2rem 20px;
   color: #595959; 
   font-size:1.8rem;
 `
-const StyledNamesP = styled.p`
+/* const StyledNamesP = styled.p`
 padding: 1.2rem 0 1.2rem 20px;
   text-align: left;
   border-bottom: 1px solid #bdbdbd;
   color: #333333; 
   font-size:1.8rem;
-`
+` */
 
 
 const ModalConversation = (props) => {

@@ -1,7 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
-import ContactModalConversation from "./ContactModalConversation";
+
 
 const Modal = styled.div`
   width: 540px;
