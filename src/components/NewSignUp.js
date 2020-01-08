@@ -92,6 +92,8 @@ const validate = ({ username, password }) => {
 		 errors.username = 'Please enter your username';
 	} else if (username.length < 7) {
 		errors.username = 'Your first name must have 7 characters or more';
+    } else if (!username.includes('@')) {
+        errors.username = 'Your username must be a valid email address'
     }
 
 
@@ -135,7 +137,7 @@ const NewSignUp = (props) => {
 						return (
 							<Form className='form-container'>
 									<Label htmlFor='username'>Username:</Label>
-									<Field name='username' type='text' placeholder='username' />
+									<Field name='username' type='text' placeholder='name@email.com' />
 									<ErrorMessage name='username' component='div' className='red' />
 							
 									<Label htmlFor='password'>Password:</Label>

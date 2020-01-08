@@ -1,14 +1,10 @@
-import { combineReducers } from 'redux';
-import { reducer as formReducer } from 'redux-form';
-
-
-export const initialState = {
+const initialState = {
     email: '',
     password: '',
     isLogging: false
 }
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch(action.type) {
        default:
        return state;
@@ -16,6 +12,3 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export const rootReducer = combineReducers({
-    form: formReducer
-})

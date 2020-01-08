@@ -97,15 +97,15 @@ const validate = ({ name, phone, email }) => {
 	// validate phone #
 	if (!phone) {
 		 errors.phone = 'Please enter a valid phone #';
-	} else if (phone.length < 12) {
-		errors.phone = 'Your phone# must have 10 numbers and include dashes';
+	} else if (!phone.includes('-')) {
+		errors.phone = 'Phone # must include dashes';
     }
     
     //validate email
     if(!email) {
         errors.email = 'Please enter a valid email address'
-    }else if (email.length < 11) {
-        errors.email = 'Your email must have at least 11 characters or more'
+    }else if (!email.includes('@')) {
+        errors.email = 'Invalid email'
     }
 	return errors;
 };
@@ -125,13 +125,15 @@ const UserProfile = (props) => {
                     email: ''
                 }}  
 
-                onSubmit={(values, tools) => {
+                onSubmit={(values) => {
+                    console.log('Submitted Form', values);
                     axiosWithAuth()
                         .post('/user/details', values)
                         .then(res => {
+                            console.log(res)
                             localStorage.setItem('token', res.data.token);
                             props.history.push('/welcome');
-                            tools.resetForm();
+                            
                         })
                         .catch(err => {
                             console.log('Data returned an error', err)
@@ -142,7 +144,7 @@ const UserProfile = (props) => {
 						return (
 							<Form className='form-container'>
 									<Label htmlFor='name'>Name:</Label>
-									<Field name='Name' type='text' placeholder='John Doe' />
+									<Field name='name' type='text' placeholder='John Doe' />
 									<ErrorMessage name='name' component='div' className='red' />
 							
 									<Label htmlFor='phone'>Phone #:</Label>
