@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './App.css';
 import { Route, Switch } from 'react-router-dom'
 import NewSignUp from './components/NewSignUp'
@@ -38,12 +37,4 @@ function App() {
 
 
 
-
-
-const mapStateToProps = (state) => {
-  return {
-
-  }
-}
-
-export default connect(mapStateToProps, {})(App);
+export default App;
