@@ -1,7 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
-import ContactModalConversation from "./ContactModalConversation";
+
 
 const Modal = styled.div`
   width: 540px;
@@ -95,63 +94,56 @@ const SelectDrop = styled.select`
     width: 343px;
     margin: 0 0 2.5rem 0;
     padding: 10px 0;
-
     `
-
-    const WrapAgain = styled.div`
+const WrapAgain = styled.div`
         width: 100%;
-        
-        
-      
     `
+const ModalConversationTopic = props => {
+  if (props.showNew === true) {
+    return (
+      <Modal>
 
-
-const ModalConversation = props => {
-  //   if (props.show === true) {
-  return (
-    <Modal>
-        
-      <StyledHeaderP className="headerM">
-        <span className="cursorP" onClick={() => props.setShow(false)}>
-          X
+        <StyledHeaderP className="headerM">
+          <span className="cursorP" onClick={() => props.setShowNew(false)}>
+            X
         </span>
-      </StyledHeaderP>
-      <WrapAgain>
-      <WrapFlex >
-      <StyledTopicP>I need to talk to Heather about...</StyledTopicP>
-      
-      <form action="">
-        <SelectDrop name="topics">
-          <option value="ADHD">ADHD</option>
-          <option value="Anxiety">Anxiety</option>
-          <option value="Autism">Autism</option>
-          <option value="Chronic Pain">Bipolar</option>
-          <option value="Depression">Depression</option>
-          <option value="Eating Disorders">Eating Disorders</option>
-          <option value="Grief/Loss">Grief/Loss</option>
-          <option value="LGBT Isssues">LGBT Isssues</option>
-          <option value="Mental Health">Mental Health</option>
-          <option value="PTSD">PTSD</option>
-          <option value="Sexual Assault">Sexual Assault</option>
-          <option value="STIs">STIs</option>
-          <option value="Substance Abuse">Substance Abuse</option>
-        </SelectDrop>
-        <p className="pIntro">Introduction (optional)</p>
-        <div>
-          <textarea className="textArea" name="message" >
-            Provide a brief introduction to the conversation
+        </StyledHeaderP>
+        <WrapAgain>
+          <WrapFlex >
+            <StyledTopicP>I need to talk to Heather about...</StyledTopicP>
+
+            <form action="">
+              <SelectDrop name="topics">
+                <option value="ADHD">ADHD</option>
+                <option value="Anxiety">Anxiety</option>
+                <option value="Autism">Autism</option>
+                <option value="Chronic Pain">Bipolar</option>
+                <option value="Depression">Depression</option>
+                <option value="Eating Disorders">Eating Disorders</option>
+                <option value="Grief/Loss">Grief/Loss</option>
+                <option value="LGBT Isssues">LGBT Isssues</option>
+                <option value="Mental Health">Mental Health</option>
+                <option value="PTSD">PTSD</option>
+                <option value="Sexual Assault">Sexual Assault</option>
+                <option value="STIs">STIs</option>
+                <option value="Substance Abuse">Substance Abuse</option>
+              </SelectDrop>
+              <p className="pIntro">Introduction (optional)</p>
+              <div>
+                <textarea className="textArea" name="message" >
+                  Provide a brief introduction to the conversation
           </textarea>
-        </div>
-        <ButtonSpan>Send Request</ButtonSpan> 
-      </form>
-      
-      </WrapFlex>
-      </WrapAgain>
-    </Modal>
-  );
-  //   } else {
-  //     return null;
-  //   }
+              </div>
+              <ButtonSpan>Send Request</ButtonSpan>
+            </form>
+
+          </WrapFlex>
+        </WrapAgain>
+      </Modal>
+    );
+  } else {
+    return null;
+  }
 };
 
-export default ModalConversation;
+export default ModalConversationTopic;

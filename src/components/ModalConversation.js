@@ -1,8 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
-import { Route, Link } from "react-router-dom";
+import React from "react";
 import styled from "styled-components";
 import ContactModalConversation from './ContactModalConversation'
-
 
 const Modal = styled.div`
   width: 55%;
@@ -17,9 +15,9 @@ const Modal = styled.div`
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
- 
+  z-index: 10;
   
-
+ 
   .link-purple {
     color: #330272;
     font-size: 1.5rem;
@@ -31,7 +29,6 @@ const Modal = styled.div`
 .display-none {
   display: none;
 }
-
 
 
 .cursorP {
@@ -53,29 +50,20 @@ padding: 1.2rem 0 1.2rem 20px;
   color: #595959; 
   font-size:1.8rem;
 `
-const StyledNamesP = styled.p`
-padding: 1.2rem 0 1.2rem 20px;
-  text-align: left;
-  border-bottom: 1px solid #bdbdbd;
-  color: #333333; 
-  font-size:1.8rem;
-`
-
 
 const ModalConversation = (props) => {
-  if (props.show === true) {
+  if (props.show === true && props.showNew === false) {
     return (
       <Modal>
         <StyledHeaderP className='headerM' ><span className='cursorP' onClick={() => props.setShow(false)}>X</span></StyledHeaderP>
         <StyledSubHeaderP >Search for people </StyledSubHeaderP>
-        <ContactModalConversation setShow={props.setShow}/>
-      </Modal>)
+        <ContactModalConversation setShow={props.setShow} setShowNew={props.setShowNew} />
+      </Modal>
+
+    )
   } else {
-    return null;
+    return null
   }
 }
-
-
-
 
 export default ModalConversation;

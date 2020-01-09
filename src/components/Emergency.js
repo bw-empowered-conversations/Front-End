@@ -4,6 +4,7 @@ import Background from "../images/backhandsblur.jpg";
 import Header from "./Header";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import axios from 'axios'
 
 const WrapBackDiv = styled.div`
   height: 100vh;
@@ -74,38 +75,21 @@ const ButtonSpan = styled.button`
     
 `
 
-/* const  DDD = styled.div`
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin: 0rem auto;
-    width: 100%;
-`
-
-const  FFF = styled.div`
-    display:flex;
-    flex-direction: column;
-    width: 50%;
-    
-    
-    .margin-right {
-        margin-right:5%;
-    }
-
-    .margin-left {
-        margin-left:5%;
-    }
-   
-` */
-
-
 const NewSignUp2 = () => {
     const { register, handleSubmit, errors } = useForm()
-    
+
     const onSubmit = data => {
         console.log(data)
-        window.location.href = 'legal'
+        // window.location.href = 'legal' 
+        axios.post('https://reqres.in/api/users', data)
+            .then(res => {
+                console.log(res)
+                console.log('success', res)
+
+            })
+            .catch(err => console.log(err.res))
     }
+
     return (
         <>
             <WrapBackDiv>
@@ -132,18 +116,19 @@ const NewSignUp2 = () => {
                             id='phone'
                             label="phone"
                             name="phone"
-                            ref={register({ required: true, minLength: 10, pattern:  { value: /[0-9]{3}-[0-9]{3}-[0-9]{4}/, message:'invalid'}
+                            ref={register({
+                                required: true, minLength: 10, pattern: { value: /[0-9]{3}-[0-9]{3}-[0-9]{4}/, message: 'invalid' }
                             })}
                         />
                         {errors.phone && errors.phone.type === 'required' && <p className='red'>Phone Number is requried</p>}
                         {errors.phone && errors.phone.type === 'minLength' && <p className='red'>This field requires minimum length of 7</p>}
                         {errors.phone && errors.phone.type === 'pattern' && <p className='red'>Follow this format 530-654-8978</p>}
 
-                        
+
 
                         <ButtonSpan>Continue</ButtonSpan>
                     </FormStyle>
-               <Link to='/newsignup'><p className='link-purple'> Back </p></Link> 
+                    <Link to='/newsignup'><p className='link-purple'> Back </p></Link>
 
                 </Modal>
             </WrapBackDiv>
