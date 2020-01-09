@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header2 from "./Header2";
 import styled from 'styled-components';
 import ModalConversation from './ModalConversation';
 import NewConversation from './NewConversation'
 
+import ModalConversationTopic from './ModalConversationTopic'
+import axios from 'axios'
+import Names from './NamesSideBar'
 
 const StyledWrapDiv = styled.div`
     display: flex;
@@ -44,38 +47,23 @@ const StyledWrapSideDiv = styled.div`
 
 
 
-
-/* const StyledMainContentDiv = styled.div`
-      width: 75%;
-      align-self: center;
-      flex-direction:column;
-      height: 20vh;
-      justify-content: space-around;
-      display:flex;
-      align-items:center;
-
-      .pTop {
-          font-size: 2.2rem;
-      }
-      .pBottom {
-          font-size: 1.8rem;
-      }
-
-` 
-const ButtonSpan = styled.button`
-    border: 1px solid #4E09A6;
-    color: #4E09A6;
-    border-radius: 4px; 
-    font-size: 1.8rem;
-    padding: 1.2rem 2rem;
-    font-weight: 500;
-    width: 19.2rem;
-    text-align:center;
-` */
-
-
 const SearchConversations = () => {
     const [show, setShow] = useState(false)
+    const [name, setName] = useState([])
+    const [showNew, setShowNew] = useState(false)
+
+    useEffect(() => {
+        axios
+            .get(`https://rickandmortyapi.com/api/character/`)
+            .then(response => {
+                console.log(response.data.results);
+                setName(response.data.results)
+            })
+            .catch(error => {
+                console.log("Sorry you suck", error);
+            });
+    }, []);
+
 
     return (
         <div className="emergency-container">
@@ -83,30 +71,23 @@ const SearchConversations = () => {
             <StyledWrapDiv>
                 <StyledWrapSideDiv>
                     <h2 className='h2side'>Search conversations</h2>
-                    <div className='border'>
-                        <p className='pName'>hello</p>
-                        <p className='pTopic'>hello</p>
-                    </div>
-                    <div className='border'>
-                        <p className='pName'>hello</p>
-                        <p className='pTopic'>hello</p>
-                    </div>
-                    <div className='border'>
-                        <p className='pName'>hello</p>
-                        <p className='pTopic'>hello</p>
-                    </div>
-                    <div className='border'>
-                        <p className='pName'>hello</p>
-                        <p className='pTopic'>hello</p>
-                    </div>
 
+                    {name.map(nam => {
+                        return (
+                            <Names
+                                key={nam.id}
+                                firstName={nam.name}
+                                gender={nam.gender}
+                            />
+                        )
+                    })}
 
                 </StyledWrapSideDiv>
-                <NewConversation setShow={setShow} show={show}/>
-             
-                <ModalConversation setShow={setShow} show={show}>
+                <NewConversation setShow={setShow} show={show} />
 
-                </ModalConversation>
+                <ModalConversation setShow={setShow} show={show} setShowNew={setShowNew} showNew={showNew} />
+
+                <ModalConversationTopic setShow={setShow} show={show} setShowNew={setShowNew} showNew={showNew} />
 
             </StyledWrapDiv>
         </div>

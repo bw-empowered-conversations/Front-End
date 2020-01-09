@@ -11,12 +11,12 @@ padding: 1.2rem 0 1.2rem 20px;
 
 
 const ContactModalConversation = (props) => {
-    return (
-        <>
-          <StyledNamesP onClick={() => props.setShow(false)}>Bob Sapp</StyledNamesP>
-        </>
-    )
-  }
-  
+  return (
+    <>
+      <StyledNamesP onClick={() => props.setShowNew(true)}>Bob Sapp</StyledNamesP>
+    </>
+  )
+}
 
-  export default ContactModalConversation
+
+export default ContactModalConversation
