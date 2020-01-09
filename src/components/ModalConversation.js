@@ -51,6 +51,7 @@ padding: 1.2rem 0 1.2rem 20px;
   font-size:1.8rem;
 `
 
+
 const ModalConversation = (props) => {
   if (props.show === true && props.showNew === false) {
     return (

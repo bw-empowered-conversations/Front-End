@@ -3,10 +3,10 @@ import Header2 from "./Header2";
 import styled from 'styled-components';
 import ModalConversation from './ModalConversation';
 import NewConversation from './NewConversation'
+
 import ModalConversationTopic from './ModalConversationTopic'
 import axios from 'axios'
 import Names from './NamesSideBar'
-
 
 const StyledWrapDiv = styled.div`
     display: flex;
@@ -44,6 +44,8 @@ const StyledWrapSideDiv = styled.div`
         color: #595959
     }
 `
+
+
 
 const SearchConversations = () => {
     const [show, setShow] = useState(false)
