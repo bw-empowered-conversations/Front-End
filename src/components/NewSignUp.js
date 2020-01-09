@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import Header from "./Header";
 import Background from "../images/backhandsblur.jpg";
+import { connect } from "react-redux";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import './style.css';
 import styled from "styled-components";
@@ -157,5 +158,11 @@ const NewSignUp = (props) => {
     );
 };
 
-export default NewSignUp;
+const mapStateToProps = state => {
+    return {
+        
+    }
+}
+
+export default connect(mapStateToProps, {})(NewSignUp);
 
